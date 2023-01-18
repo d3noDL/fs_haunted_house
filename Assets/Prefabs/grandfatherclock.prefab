@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 278029911896389207}
   - component: {fileID: 2531071560531207677}
   - component: {fileID: 7644854760518413859}
+  - component: {fileID: 780930599327851374}
   m_Layer: 0
   m_Name: grandfatherclock
-  m_TagString: Untagged
+  m_TagString: GrandfatherClock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &780930599327851374
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4931243244586354934}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4, y: 2.4000006, z: 13.476396}
+  m_Center: {x: 0, y: 0, z: 5.5381975}
