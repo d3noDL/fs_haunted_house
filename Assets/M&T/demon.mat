@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: demon
-  m_Shader: {fileID: 10750, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 3bb233a920649214dad970e35947ec73, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _ALPHABLEND_ON
@@ -77,6 +77,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 0.7411525}
+    - _Color: {r: 1, g: 1, b: 1, a: 0.008256169}
     - _EmissionColor: {r: 0.65205944, g: 0.65205944, b: 0.65205944, a: 1}
   m_BuildTextureStacks: []

@@ -7662,7 +7662,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24048
+  m_Name: pb_Mesh24606
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -33396,6 +33396,11 @@ Transform:
   m_Father: {fileID: 2065414600}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1642010149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3345087361703434213, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
+  m_PrefabInstance: {fileID: 5548680344552102220}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1652606017 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 430174264784445095, guid: 09c863a0eefd62742bfa89ccd9a7765f, type: 3}
@@ -37143,6 +37148,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6992908594060392958, guid: f41fe41e38aea434bbe9fc6d261f6a01, type: 3}
   m_PrefabInstance: {fileID: 1900128185}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1823779295 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8643136358537275212, guid: f41fe41e38aea434bbe9fc6d261f6a01, type: 3}
+  m_PrefabInstance: {fileID: 1900128185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1832286028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38172,13 +38182,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2277093514850939809, guid: f41fe41e38aea434bbe9fc6d261f6a01, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 1823779295}
+    - target: {fileID: 2277093514850939809, guid: f41fe41e38aea434bbe9fc6d261f6a01, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1642010149}
     - target: {fileID: 6992908594060392958, guid: f41fe41e38aea434bbe9fc6d261f6a01, type: 3}
       propertyPath: m_Name
       value: Demon
-      objectReference: {fileID: 0}
-    - target: {fileID: 6992908594060392958, guid: f41fe41e38aea434bbe9fc6d261f6a01, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7656152336528483140, guid: f41fe41e38aea434bbe9fc6d261f6a01, type: 3}
       propertyPath: m_RootOrder

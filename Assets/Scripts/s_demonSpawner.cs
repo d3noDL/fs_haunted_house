@@ -15,7 +15,7 @@ public class s_demonSpawner : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("SpawnGhost", 4, 2);
+        InvokeRepeating("SpawnGhost", 4, 4);
     }
 
     private void SpawnGhost()
@@ -27,9 +27,8 @@ public class s_demonSpawner : MonoBehaviour
             Debug.Log("Spawning demon on " + point);
             demon.SetActive(true);
             demon.transform.position = spawnPoints[point].transform.position;
-            demon.transform.LookAt(player.transform.position);
             demon.GetComponent<s_demon>().Spawn();
-            
+
         }
         else
         {
