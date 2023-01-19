@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class s_footsteps : MonoBehaviour
 {
     public AudioClip[] f_wood, f_carpet, f_tile;
     public AudioSource audioSource;
-    
+
+
     public void Footsteps(int type)
     {
         switch (type)

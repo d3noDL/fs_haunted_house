@@ -77,7 +77,7 @@ public class s_player : MonoBehaviour
     public void HandleInput()
     {
         RaycastHit hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1, LayerMask.GetMask("Default")))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1.5f, LayerMask.GetMask("Default")))
         {
             switch (hit.transform.tag)
             {
@@ -112,6 +112,14 @@ public class s_player : MonoBehaviour
                     }
                     ui.GetComponent<s_ui>().SetPointer("Interact");
                     break;
+                
+                case "EntranceDoor":
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        Debug.Log("It won't budge");
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Check");
+                    break;
                     
                 default:
                     if (Input.GetMouseButtonDown(0))
@@ -133,11 +141,11 @@ public class s_player : MonoBehaviour
     {
         if (cc.velocity.magnitude > 0.1f)
         {
-            GetComponentInChildren<Animation>().Play();
+            GetComponentInChildren<Animator>().SetBool("isMoving", true);
         }
         else
         {
-            GetComponentInChildren<Animation>().Stop();
+            GetComponentInChildren<Animator>().SetBool("isMoving", false);
         }
     }
 
@@ -160,6 +168,7 @@ public class s_player : MonoBehaviour
         else
         {
             door.GetComponent<s_door>().Locked();
+            Debug.Log("The door is locked!");
             yield break;
         }
         
