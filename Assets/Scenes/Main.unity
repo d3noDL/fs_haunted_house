@@ -43544,7 +43544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8563063726178522026, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
       propertyPath: colorDepth
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8563063726178522026, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
       propertyPath: shadowType
@@ -43552,15 +43552,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8563063726178522026, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
       propertyPath: customRes.x
-      value: 602
+      value: 422
       objectReference: {fileID: 0}
     - target: {fileID: 8563063726178522026, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
       propertyPath: customRes.y
-      value: 246
+      value: 380
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563063726178522026, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
+      propertyPath: subtractFade
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8563063726178522026, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
       propertyPath: ditherIntensity
-      value: 1
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563063726178522026, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
+      propertyPath: resolutionFactor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8563063726178522026, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
+      propertyPath: polygonInaccuracy
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 8563063726178522026, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
       propertyPath: scanlineIntensity

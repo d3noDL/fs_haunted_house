@@ -17,7 +17,7 @@ public class s_demonSpawner : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("SpawnGhost", 10, 15);
+        InvokeRepeating("SpawnGhost", Random.Range(5, 15), 15);
     }
 
     private void Update()
