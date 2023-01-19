@@ -102,6 +102,10 @@ MonoBehaviour:
   connectedDoor: {fileID: 0}
   spawn: {fileID: 4004477068341926619}
   isLocked: 0
+  audioSource: {fileID: 3278660531810867981}
+  door_open: {fileID: 8300000, guid: 0b543795eeada864298f97d6d095da3b, type: 3}
+  door_close: {fileID: 8300000, guid: 466717463b5a67a40b056bbf361fe6f9, type: 3}
+  door_locked: {fileID: 8300000, guid: b57e4b4f83bfb7c4285796f012c5a2d1, type: 3}
 --- !u!65 &2058615640362464045
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -136,9 +140,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 4
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -146,23 +150,32 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.25
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -4.0016
+      outSlope: -4.0016
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.472229
+      value: 0.37161255
+      inSlope: -1.0004
+      outSlope: -1.0004
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.2501
+      outSlope: -0.2501
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -171,7 +184,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

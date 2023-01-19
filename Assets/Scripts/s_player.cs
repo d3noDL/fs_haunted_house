@@ -19,8 +19,7 @@ public class s_player : MonoBehaviour
     [SerializeField] private GameObject cam, ui;
     [SerializeField] private CharacterController cc;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip 
-        doorOpen, doorClose, doorLocked;
+    [SerializeField] private GameObject[] pointers;
 
     private float rotationX;
     private LayerMask layerMask;
@@ -46,6 +45,7 @@ public class s_player : MonoBehaviour
             HandleMovement();
             HandleLook();
             HandleInput();
+            HandleAnimation();
         }
     }
 
@@ -76,53 +76,96 @@ public class s_player : MonoBehaviour
 
     public void HandleInput()
     {
-        if (Input.GetMouseButtonDown(0))
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1, LayerMask.GetMask("Default")))
         {
-            RaycastHit hit;
-            if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1, LayerMask.GetMask("Default")))
+            switch (hit.transform.tag)
             {
-                switch (hit.transform.tag)
-                {
-                    case "Door":
+                case "Door":
+                    if (Input.GetMouseButtonDown(0))
+                    {
                         Debug.Log("It's a door!");
                         StartCoroutine(ChangeRoom(
                             hit.transform.GetComponent<s_door>().connectedDoor.GetComponent<s_door>().spawn.transform
                                 .position,
                             hit.transform.GetComponent<s_door>().connectedDoor.GetComponent<s_door>().spawn.transform
-                                .rotation));
-                        break;
-                    
-                    case "GrandfatherClock":
+                                .rotation, hit.transform.gameObject));
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Interact");
+                    break;
+                        
+
+                case "GrandfatherClock":
+                    if (Input.GetMouseButtonDown(0))
+                    {
                         Debug.Log("It keeps on ticking, it's driving me crazy");
-                        break;
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Check");
+                    break;
                     
-                    case "LightSwitch":
+                case "LightSwitch":
+                    if (Input.GetMouseButtonDown(0))
+                    {
                         Debug.Log("It's a lightswitch!");
                         hit.transform.GetComponent<s_lightswitch>().Toggle();
-                        break;
+                        hit.transform.GetComponent<AudioSource>().Play();
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Interact");
+                    break;
                     
-                    default:
+                default:
+                    if (Input.GetMouseButtonDown(0))
+                    {
                         Debug.Log("It's something");
-                        break;
-                }
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Default");
+                    break;
+                
             }
+        }
+        else
+        {
+            ui.GetComponent<s_ui>().SetPointer("Default");
         }
     }
 
-    IEnumerator ChangeRoom(Vector3 pos, Quaternion rot)
+    public void HandleAnimation()
     {
-        isActive = false;
-        audioSource.PlayOneShot(doorOpen);
-        ui.GetComponent<s_ui>().Fader(false);
-        yield return new WaitForSeconds(1);
-        transform.position = pos;
-        transform.rotation = rot;
-        yield return new WaitForSeconds(1);
-        audioSource.PlayOneShot(doorClose);
-        ui.GetComponent<s_ui>().Fader(true);
-        isActive = true;
-        yield break;
+        if (cc.velocity.magnitude > 0.1f)
+        {
+            GetComponentInChildren<Animation>().Play();
+        }
+        else
+        {
+            GetComponentInChildren<Animation>().Stop();
+        }
     }
+
+    IEnumerator ChangeRoom(Vector3 pos, Quaternion rot, GameObject door)
+    {
+        if (door.GetComponent<s_door>().isLocked == false)
+        {
+            isActive = false;
+            door.GetComponent<s_door>().Open();
+            ui.GetComponent<s_ui>().Fader(false);
+            yield return new WaitForSeconds(1);
+            transform.position = pos;
+            transform.rotation = rot;
+            yield return new WaitForSeconds(1);
+            door.GetComponent<s_door>().Close();
+            ui.GetComponent<s_ui>().Fader(true);
+            isActive = true;
+            yield break;
+        }
+        else
+        {
+            door.GetComponent<s_door>().Locked();
+            yield break;
+        }
+        
+    }
+
+    
     
     
     #endregion
