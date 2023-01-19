@@ -16,7 +16,24 @@ public class e_breaker : MonoBehaviour
 
     private void Start()
     {
-        ToggleBreaker();
+        foreach (GameObject light in lights)
+        {
+            light.SetActive(false);
+                
+        }
+
+        foreach (GameObject lightSwitch in lightSwitches)
+        {
+            if (lightSwitch.GetComponent<s_lightswitch>().isOn == true)
+            {
+                lightSwitch.GetComponent<s_lightswitch>().Toggle();
+            }
+        }
+
+        mainLight.SetActive(true);
+        isOn = true;
+        numberOfLightsOn = 0;
+        bLight.SetActive(false);
     }
 
     private void Update()
