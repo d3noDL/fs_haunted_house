@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 public class s_demonSpawner : MonoBehaviour
@@ -11,22 +12,41 @@ public class s_demonSpawner : MonoBehaviour
     public GameObject player;
     public GameObject[] spawnPoints;
     public bool isInSector;
+    public BoxCollider box;
 
 
     private void Start()
     {
-        InvokeRepeating("SpawnGhost", 4, 4);
+        InvokeRepeating("SpawnGhost", 10, 15);
     }
+
+    private void Update()
+    {
+        if (light.activeSelf == true && demon.activeSelf == true)
+        {
+            demon.GetComponent<s_demon>().LightDespawn();
+        }
+        else
+        {
+            return;
+        }
+    }
+
 
     private void SpawnGhost()
     {
         if (demon.activeSelf == false && light.activeSelf == false && isInSector == true)
         {
+            var spawnX = box.center.x - box.size.x / 2 + Random.Range(0, box.size.x);
+            var spawnY = box.center.y - 0.65f;
+            var spawnZ = box.center.z - box.size.z / 2 + Random.Range(0, box.size.z);
+
+            Vector3 spawnPosition = new Vector3(spawnX, spawnY, spawnZ);
             
-            var point = Random.Range(0, spawnPoints.Length);
-            Debug.Log("Spawning demon on " + point);
+            Debug.Log("Spawning demon on: " + spawnPosition);
+            
+            demon.transform.position = spawnPosition;
             demon.SetActive(true);
-            demon.transform.position = spawnPoints[point].transform.position;
             demon.GetComponent<s_demon>().Spawn();
 
         }
@@ -36,6 +56,8 @@ public class s_demonSpawner : MonoBehaviour
         }
         
     }
+    
+    
 
     private void OnTriggerEnter(Collider other)
     {
