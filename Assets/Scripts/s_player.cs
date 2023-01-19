@@ -120,6 +120,14 @@ public class s_player : MonoBehaviour
                     }
                     ui.GetComponent<s_ui>().SetPointer("Check");
                     break;
+                
+                case "Breaker":
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        GameObject.Find("Breaker").GetComponent<e_breaker>().ToggleBreaker();
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Interact");
+                    break;
                     
                 default:
                     if (Input.GetMouseButtonDown(0))

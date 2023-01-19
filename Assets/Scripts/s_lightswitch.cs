@@ -18,6 +18,7 @@ public class s_lightswitch : MonoBehaviour
             }
             switchLight.SetActive(true);
             isOn = false;
+            GameObject.Find("Breaker").GetComponent<e_breaker>().RemoveLight();
         }
         else
         {
@@ -27,6 +28,7 @@ public class s_lightswitch : MonoBehaviour
             }
             switchLight.SetActive(false);
             isOn = true;
+            GameObject.Find("Breaker").GetComponent<e_breaker>().AddLight();
         }
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - GrandfatherClock
   - LightSwitch
   - EntranceDoor
+  - Breaker
   layers:
   - Default
   - TransparentFX
