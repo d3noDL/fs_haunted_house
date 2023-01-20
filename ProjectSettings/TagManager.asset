@@ -10,6 +10,7 @@ TagManager:
   - EntranceDoor
   - Breaker
   - Sector
+  - Piano
   layers:
   - Default
   - TransparentFX

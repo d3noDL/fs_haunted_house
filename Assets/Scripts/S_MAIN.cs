@@ -8,10 +8,11 @@ public class S_MAIN : MonoBehaviour
 {
     public static S_MAIN i;
 
-
     public AudioClip[] musicClip;
 
     private AudioSource audioSource;
+
+    public s_player player;
 
     private void Awake()
     {

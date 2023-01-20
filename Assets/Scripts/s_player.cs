@@ -137,7 +137,7 @@ public class s_player : MonoBehaviour
                     }
                     ui.GetComponent<s_ui>().SetPointer("Interact");
                     break;
-                    
+
                 default:
                     if (Input.GetMouseButtonDown(0))
                     {
@@ -169,6 +169,7 @@ public class s_player : MonoBehaviour
     public void HandleHealth()
     {
         ui.GetComponent<s_ui>().deatherer.color = new Color(1, 1, 1, health);
+        cam.GetComponent<Camera>().fieldOfView = 60 - (health * 20);
         
         if (health < 0)
         {

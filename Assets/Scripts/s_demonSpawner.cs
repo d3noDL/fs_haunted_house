@@ -57,7 +57,7 @@ public class s_demonSpawner : MonoBehaviour
         if (other.name == "Player")
         {
             isInSector = true;
-            InvokeRepeating("SpawnGhost", Random.Range(5, 15), 15);
+            InvokeRepeating("SpawnGhost", Random.Range(2, 15), 15);
         }
 
         if (name == "1" || name == "2" || name == "3" && other.name == "Player")
