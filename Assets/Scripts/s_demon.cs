@@ -57,7 +57,7 @@ public class s_demon : MonoBehaviour
     public void Spawn()
     {
         StartCoroutine(Spawner());
-        S_MAIN.i.PlayMusic(0);
+        
     }
 
     public void Despawn()
@@ -70,10 +70,12 @@ public class s_demon : MonoBehaviour
         StopCoroutine(Spawner());
         StopCoroutine(Despawner());
         StartCoroutine(LightDespawner());
-        S_MAIN.i.StopMusic();
+        
     }
+    
+    
 
-    IEnumerator Spawner()
+        IEnumerator Spawner()
     {
         for (float i = 0; i < 0.35f; i += Time.deltaTime / 2)
         {

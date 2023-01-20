@@ -11,6 +11,7 @@ TagManager:
   - Breaker
   - Sector
   - Piano
+  - Twin
   layers:
   - Default
   - TransparentFX

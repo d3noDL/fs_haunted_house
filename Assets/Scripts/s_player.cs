@@ -137,7 +137,16 @@ public class s_player : MonoBehaviour
                     }
                     ui.GetComponent<s_ui>().SetPointer("Interact");
                     break;
+                
+                case "Twin":
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        ui.GetComponent<e_dialogue>().Talk("twinControllerLost");
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Talk");
+                    break;
 
+                
                 default:
                     if (Input.GetMouseButtonDown(0))
                     {
