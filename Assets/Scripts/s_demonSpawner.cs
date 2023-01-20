@@ -22,13 +22,9 @@ public class s_demonSpawner : MonoBehaviour
 
     private void Update()
     {
-        if (light.activeSelf == true && demon.activeSelf == true)
+        if (light.activeSelf == true && demon.activeSelf == true && demon.GetComponent<s_demon>().currentSector == gameObject.name)
         {
             demon.GetComponent<s_demon>().LightDespawn();
-        }
-        else
-        {
-            return;
         }
     }
 
@@ -76,4 +72,6 @@ public class s_demonSpawner : MonoBehaviour
             isInSector = false;
         }
     }
+
+
 }

@@ -10,6 +10,16 @@ public class s_demon : MonoBehaviour
     public GameObject player;
     public Animator anim;
 
+    public string currentSector;
+    public bool isVisibleToPlayer;
+
+    private Renderer renderer;
+
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
         transform.LookAt(player.transform);
@@ -18,6 +28,17 @@ public class s_demon : MonoBehaviour
         eulerAngles.z = 0;
 
         transform.rotation = Quaternion.Euler(eulerAngles);
+
+        if (GetComponentInChildren<SkinnedMeshRenderer>().isVisible)
+        {
+            isVisibleToPlayer = true;
+            player.GetComponent<s_player>().health -= Time.deltaTime / 4;
+        }
+        else
+        {
+            isVisibleToPlayer = false;
+            player.GetComponent<s_player>().health += Time.deltaTime / 8;
+        }
     }
 
     public void Spawn()
@@ -58,6 +79,8 @@ public class s_demon : MonoBehaviour
             mat.color = new Color(1, 1, 1, i);
             yield return null;
         }
+
+        transform.position = new Vector3(100, 100, 100);
         gameObject.SetActive(false);
     }
     
@@ -70,6 +93,19 @@ public class s_demon : MonoBehaviour
             mat.color = new Color(1, 1, 1, i);
             yield return null;
         }
+        transform.position = new Vector3(100, 100, 100);
+        currentSector = null;
         gameObject.SetActive(false);
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        currentSector = other.name;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        currentSector = null;
+    }
+    
 }

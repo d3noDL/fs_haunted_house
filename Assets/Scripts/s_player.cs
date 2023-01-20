@@ -20,9 +20,12 @@ public class s_player : MonoBehaviour
     [SerializeField] private CharacterController cc;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private GameObject[] pointers;
+    
 
     private float rotationX;
     private LayerMask layerMask;
+
+    public float health = 1;
     
 
     #endregion
@@ -46,6 +49,7 @@ public class s_player : MonoBehaviour
             HandleLook();
             HandleInput();
             HandleAnimation();
+            HandleHealth();
         }
     }
 
@@ -154,6 +158,21 @@ public class s_player : MonoBehaviour
         else
         {
             GetComponentInChildren<Animator>().SetBool("isMoving", false);
+        }
+    }
+
+    public void HandleHealth()
+    {
+        if (health > 1)
+        {
+            health = 1;
+        }
+
+        if (health <= 0)
+        {
+            ui.GetComponent<s_ui>().crackImage.SetActive(true);
+            isActive = false;
+            ui.GetComponent<s_ui>().Fader(false);
         }
     }
 
