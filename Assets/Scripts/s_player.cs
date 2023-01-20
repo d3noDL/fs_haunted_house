@@ -145,6 +145,14 @@ public class s_player : MonoBehaviour
                     }
                     ui.GetComponent<s_ui>().SetPointer("Talk");
                     break;
+                
+                case "Mom":
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        ui.GetComponent<e_dialogue>().Talk("motherFirst");
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Talk");
+                    break;
 
                 
                 default:

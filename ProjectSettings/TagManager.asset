@@ -12,6 +12,7 @@ TagManager:
   - Sector
   - Piano
   - Twin
+  - Mom
   layers:
   - Default
   - TransparentFX

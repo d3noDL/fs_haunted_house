@@ -11,9 +11,11 @@ public class e_dialogue : MonoBehaviour
     [SerializeField] private TMP_Text textObject;
     [SerializeField] private GameObject panel, pointer;
     [SerializeField] private string[] 
-        dOpening, dMotherIntro, dMotherStayHere, 
+        dOpening, dMotherIntro, dMotherFirst, dMotherStayHere, 
         dMotherYouCanLeave, dMotherDemonFaceLight, 
         dTwinControllerLost, dTwinControllerFound;
+
+    public GameObject cut1;
 
     private string[] dialogue;
     int pos = 0;
@@ -49,6 +51,9 @@ public class e_dialogue : MonoBehaviour
         {
             case "opening":
                 dialogue = dOpening;
+                break;
+            case "motherFirst":
+                dialogue = dMotherFirst;
                 break;
             case "motherIntro":
                 dialogue = dMotherIntro;
@@ -92,7 +97,7 @@ public class e_dialogue : MonoBehaviour
             panel.SetActive(false);
             pointer.SetActive(true);
             S_MAIN.i.player.isActive = true;
-            yield break;  
+            yield break;
         }
         
 
