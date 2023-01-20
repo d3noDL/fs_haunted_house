@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class s_player : MonoBehaviour
@@ -20,12 +21,16 @@ public class s_player : MonoBehaviour
     [SerializeField] private CharacterController cc;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private GameObject[] pointers;
-    
+
+    [SerializeField] private AudioClip crackGlass, bodyThump, flatLine;
+    public AudioClip heartBeat;
+
 
     private float rotationX;
     private LayerMask layerMask;
 
-    public float health = 1;
+    public float health = 0;
+    public float deatherer = 0;
     
 
     #endregion
@@ -163,16 +168,16 @@ public class s_player : MonoBehaviour
 
     public void HandleHealth()
     {
-        if (health > 1)
+        ui.GetComponent<s_ui>().deatherer.color = new Color(1, 1, 1, health);
+        
+        if (health < 0)
         {
-            health = 1;
+            health = 0;
         }
 
-        if (health <= 0)
+        if (health >= 1)
         {
-            ui.GetComponent<s_ui>().crackImage.SetActive(true);
-            isActive = false;
-            ui.GetComponent<s_ui>().Fader(false);
+            StartCoroutine(Death());
         }
     }
 
@@ -180,6 +185,7 @@ public class s_player : MonoBehaviour
     {
         if (door.GetComponent<s_door>().isLocked == false)
         {
+            GetComponentInChildren<Animator>().SetBool("isMoving", false);
             isActive = false;
             door.GetComponent<s_door>().Open();
             ui.GetComponent<s_ui>().Fader(false);
@@ -199,6 +205,22 @@ public class s_player : MonoBehaviour
             yield break;
         }
         
+    }
+
+    IEnumerator Death()
+    {
+        ui.GetComponent<s_ui>().crackImage.SetActive(true);
+        S_MAIN.i.StopMusicI();
+        isActive = false;
+        audioSource.PlayOneShot(crackGlass);
+        audioSource.PlayOneShot(flatLine);
+        yield return new WaitForSeconds(1.5f);
+        audioSource.PlayOneShot(bodyThump);
+        yield return new WaitForSeconds(2);
+        ui.GetComponent<s_ui>().Fader(false);
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
     }
 
     

@@ -14,11 +14,7 @@ public class s_demonSpawner : MonoBehaviour
     public bool isInSector;
     public BoxCollider box;
 
-
-    private void Start()
-    {
-        InvokeRepeating("SpawnGhost", Random.Range(5, 15), 15);
-    }
+    
 
     private void Update()
     {
@@ -61,6 +57,17 @@ public class s_demonSpawner : MonoBehaviour
         if (other.name == "Player")
         {
             isInSector = true;
+            InvokeRepeating("SpawnGhost", Random.Range(5, 15), 15);
+        }
+
+        if (name == "1" || name == "2" || name == "3" && other.name == "Player")
+        {
+            GameObject.Find("grandfatherclock").GetComponent<AudioLowPassFilter>().enabled = false;
+        }
+        
+        else
+        {
+            GameObject.Find("grandfatherclock").GetComponent<AudioLowPassFilter>().enabled = true;
         }
     }
 
@@ -70,6 +77,8 @@ public class s_demonSpawner : MonoBehaviour
         if (other.name == "Player")
         {
             isInSector = false;
+            CancelInvoke("SpawnGhost");
+            // demon.GetComponent<s_demon>().LightDespawn();
         }
     }
 

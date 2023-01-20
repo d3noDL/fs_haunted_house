@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class s_ui : MonoBehaviour
 {
-    public Image img;
+    public Image img, deatherer;
     public GameObject crackImage;
     public GameObject[] pointers;
 

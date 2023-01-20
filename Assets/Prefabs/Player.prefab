@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1736684317436101511}
   - component: {fileID: 4736595066122587514}
   - component: {fileID: 2459486390561854704}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Footsteps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 8214062622905301525}
   - component: {fileID: 4096462182863248379}
   - component: {fileID: 8569058148191319249}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 1
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -366,6 +366,7 @@ MonoBehaviour:
   cc: {fileID: 8214062622905301525}
   audioSource: {fileID: 4096462182863248379}
   pointers: []
+  health: 1
 --- !u!1 &8599200655422509535
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,7 +379,7 @@ GameObject:
   - component: {fileID: 3373657149971415649}
   - component: {fileID: 5846337900892080138}
   - component: {fileID: 8563063726178522026}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -465,7 +466,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cfuStatus: PSXEffects v1.18.4 - version ahead?!
   sections: 01010100
-  customRes: {x: 240, y: 246}
+  customRes: {x: 637, y: 380}
   resolutionFactor: 2
   limitFramerate: -1
   skipFrames: 0
@@ -474,14 +475,14 @@ MonoBehaviour:
   affineBounds: 0
   polygonalDrawDistance: 0
   vertexInaccuracy: 30
-  polygonInaccuracy: 2
-  colorDepth: 4
+  polygonInaccuracy: 40
+  colorDepth: 8
   scanlines: 0
-  scanlineIntensity: 5
+  scanlineIntensity: 2
   ditherTexture: {fileID: 0}
   dithering: 1
   ditherThreshold: 1
-  ditherIntensity: 12
+  ditherIntensity: 4
   maxDarkness: 20
   subtractFade: 0
   favorRed: 1
@@ -493,6 +494,6 @@ MonoBehaviour:
   snapCamera: 0
   camInaccuracy: 0.05
   camSnapping: 0
-  shadowType: 0
+  shadowType: 1
   ditherSky: 0
   ditherType: 1

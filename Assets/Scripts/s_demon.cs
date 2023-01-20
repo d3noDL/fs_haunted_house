@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Language.Lua;
 using UnityEngine;
 
 public class s_demon : MonoBehaviour
@@ -12,6 +13,7 @@ public class s_demon : MonoBehaviour
 
     public string currentSector;
     public bool isVisibleToPlayer;
+    public bool isHeartbeat = false;
 
     private Renderer renderer;
 
@@ -32,18 +34,30 @@ public class s_demon : MonoBehaviour
         if (GetComponentInChildren<SkinnedMeshRenderer>().isVisible)
         {
             isVisibleToPlayer = true;
-            player.GetComponent<s_player>().health -= Time.deltaTime / 4;
+            player.GetComponent<s_player>().health += Time.deltaTime / 4;
         }
         else
         {
             isVisibleToPlayer = false;
-            player.GetComponent<s_player>().health += Time.deltaTime / 8;
+            player.GetComponent<s_player>().health -= Time.deltaTime / 8;
+            
         }
+    }
+
+    private void OnBecameVisible()
+    {
+        player.GetComponent<AudioSource>().PlayOneShot(player.GetComponent<s_player>().heartBeat);
+    }
+
+    private void OnBecameInvisible()
+    {
+        player.GetComponent<AudioSource>().Stop();
     }
 
     public void Spawn()
     {
         StartCoroutine(Spawner());
+        S_MAIN.i.PlayMusic(0);
     }
 
     public void Despawn()
@@ -56,6 +70,7 @@ public class s_demon : MonoBehaviour
         StopCoroutine(Spawner());
         StopCoroutine(Despawner());
         StartCoroutine(LightDespawner());
+        S_MAIN.i.StopMusic();
     }
 
     IEnumerator Spawner()
@@ -96,6 +111,8 @@ public class s_demon : MonoBehaviour
         transform.position = new Vector3(100, 100, 100);
         currentSector = null;
         gameObject.SetActive(false);
+        isVisibleToPlayer = false;
+
     }
 
     private void OnTriggerStay(Collider other)
