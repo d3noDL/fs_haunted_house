@@ -57,6 +57,7 @@ public class s_demonSpawner : MonoBehaviour
         if (other.name == "Player")
         {
             isInSector = true;
+            player.GetComponent<s_player>().health = 0;
             InvokeRepeating("SpawnGhost", Random.Range(2, 15), 15);
         }
 
