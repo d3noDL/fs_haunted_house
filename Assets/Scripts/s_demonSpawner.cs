@@ -14,7 +14,7 @@ public class s_demonSpawner : MonoBehaviour
     public bool isInSector;
     public BoxCollider box;
 
-    
+
 
     private void Update()
     {
