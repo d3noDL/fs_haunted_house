@@ -14,6 +14,10 @@ public class S_MAIN : MonoBehaviour
 
     public s_player player;
 
+    public GameObject[] inv;
+
+    public AudioClip pickup;
+
     private void Awake()
     {
         i = this;
@@ -47,5 +51,17 @@ public class S_MAIN : MonoBehaviour
         }
         audioSource.Stop();
         audioSource.volume = 0.5f;
+    }
+
+    public void InventoryManager(string nm)
+    {
+        foreach (GameObject item in inv)
+        {
+            if (item.name == nm)
+            {
+                item.SetActive(true);
+                audioSource.PlayOneShot(pickup);
+            }
+        }
     }
 }

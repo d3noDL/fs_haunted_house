@@ -163,6 +163,16 @@ public class s_player : MonoBehaviour
                     }
                     ui.GetComponent<s_ui>().SetPointer("Talk");
                     break;
+                
+                case "KeyItem":
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        ui.GetComponent<e_dialogue>().Talk("item" + hit.transform.name);
+                        S_MAIN.i.InventoryManager(hit.transform.name);
+                        hit.transform.gameObject.SetActive(false);
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Interact");
+                    break;
 
                 
                 default:

@@ -15,6 +15,7 @@ TagManager:
   - Mom
   - DoorPikovit
   - Demon
+  - KeyItem
   layers:
   - Default
   - TransparentFX
