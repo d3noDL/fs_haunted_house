@@ -5,29 +5,24 @@ using Language.Lua;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class e_dialogue : MonoBehaviour
 {
     [SerializeField] private TMP_Text textObject;
-    [SerializeField] private GameObject panel, pointer;
+    [SerializeField] public GameObject panel, pointer;
     [SerializeField] private string[] 
         dOpening, dMotherIntro, dMotherFirst, dMotherStayHere, 
         dMotherYouCanLeave, dMotherDemonFaceLight, 
         dTwinControllerLost, dTwinControllerFound;
 
     public GameObject cut1;
+    public UnityEvent dialoguePartEnd;
 
     private string[] dialogue;
     int pos = 0;
     private bool isRunning = false;
     
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Talk("motherDemonFaceLight");
-        }
-    }
 
     public void Talk(string dName)
     {
@@ -93,6 +88,7 @@ public class e_dialogue : MonoBehaviour
         }
         else
         {
+            dialoguePartEnd.Invoke();
             isRunning = false;
             panel.SetActive(false);
             pointer.SetActive(true);

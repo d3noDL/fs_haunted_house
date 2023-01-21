@@ -13843,7 +13843,9 @@ MonoBehaviour:
   dMotherFirst:
   - 'Woman: The living room is on your left.'
   - 'Woman: Please, hurry.'
-  dMotherStayHere: []
+  dMotherStayHere:
+  - 'Woman: Do not leave this room. She will hunt you down otherwise.'
+  - 'Woman: Is that understood?'
   dMotherYouCanLeave: []
   dMotherDemonFaceLight:
   - Test
@@ -13853,6 +13855,33 @@ MonoBehaviour:
   - 'Young Girl: I just want to play my game...'
   dTwinControllerFound: []
   cut1: {fileID: 0}
+  dialoguePartEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 768818139}
+        m_TargetAssemblyTypeName: s_warning, Assembly-CSharp
+        m_MethodName: OnDialogueEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1149833827}
+        m_TargetAssemblyTypeName: s_begin, Assembly-CSharp
+        m_MethodName: OnDialogueEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &581588737
 GameObject:
   m_ObjectHideFlags: 0
@@ -17807,6 +17836,69 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &768818137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 768818140}
+  - component: {fileID: 768818139}
+  - component: {fileID: 768818138}
+  m_Layer: 0
+  m_Name: Trigger2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!65 &768818138
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768818137}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2119907, y: 2.7665887, z: 1.9153395}
+  m_Center: {x: -0.2473225, y: 1.3638065, z: -0.19649363}
+--- !u!114 &768818139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768818137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af1bfcfce60626f4da04df376872d7b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mom: {fileID: 341908637}
+  player: {fileID: 1642010149}
+  dialogue: {fileID: 580149354}
+  trigger1: {fileID: 1149833826}
+  sectors: {fileID: 1583744379}
+--- !u!4 &768818140
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768818137}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.34, y: 0, z: -9.822472}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &776023468
 Mesh:
   m_ObjectHideFlags: 0
@@ -24536,6 +24628,7 @@ MonoBehaviour:
   player: {fileID: 1642010150}
   dialogue: {fileID: 580149354}
   mom: {fileID: 341908637}
+  trigger2: {fileID: 768818137}
 --- !u!4 &1149833828
 Transform:
   m_ObjectHideFlags: 0
@@ -29915,7 +30008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1384805765
 Light:
   m_ObjectHideFlags: 0
@@ -39344,6 +39437,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7386588012552386298, guid: 51f1878044b15144785dd21a46caf4e9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513339463655821234, guid: 51f1878044b15144785dd21a46caf4e9, type: 3}
+      propertyPath: isOn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7513339463655821234, guid: 51f1878044b15144785dd21a46caf4e9, type: 3}
       propertyPath: lights.Array.size
       value: 1
@@ -44869,7 +44970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5114039358643964073, guid: cd07c2c88f4ed5f4d84c7dba8c0f4471, type: 3}
       propertyPath: m_TagString
-      value: Mom
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5598932144893678099, guid: cd07c2c88f4ed5f4d84c7dba8c0f4471, type: 3}
       propertyPath: m_RootOrder
@@ -46043,6 +46144,10 @@ PrefabInstance:
       propertyPath: lightSwitches.Array.data[7]
       value: 
       objectReference: {fileID: 864201033}
+    - target: {fileID: 6845723253944731123, guid: 0d44f559dff689e4c924591204463afb, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d44f559dff689e4c924591204463afb, type: 3}
 --- !u!23 &6994019188651728245
