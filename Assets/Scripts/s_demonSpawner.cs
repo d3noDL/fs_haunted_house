@@ -13,6 +13,7 @@ public class s_demonSpawner : MonoBehaviour
     public GameObject[] spawnPoints;
     public bool isInSector;
     public BoxCollider box;
+    
 
 
 
@@ -27,6 +28,7 @@ public class s_demonSpawner : MonoBehaviour
 
     private void SpawnGhost()
     {
+        
         if (demon.activeSelf == false && light.activeSelf == false && isInSector == true)
         {
             var spawnX = box.center.x - box.size.x / 2 + Random.Range(0, box.size.x);
@@ -46,6 +48,8 @@ public class s_demonSpawner : MonoBehaviour
         {
             Debug.Log("Failed to spawn" + "Demon " + demon.activeSelf + "Light " + light.activeSelf + "Is in sector: " + isInSector);
         }
+
+        
         
     }
     
@@ -57,7 +61,6 @@ public class s_demonSpawner : MonoBehaviour
         if (other.name == "Player")
         {
             isInSector = true;
-            player.GetComponent<s_player>().health = 0;
             InvokeRepeating("SpawnGhost", Random.Range(2, 15), 15);
         }
 

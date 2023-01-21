@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41ffb55b98155b145a9f9558675e0917, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isActive: 1
+  isActive: 0
   movementSpeed: 2
   lookSensitivity: 2
   cam: {fileID: 8599200655422509535}
@@ -370,8 +370,10 @@ MonoBehaviour:
   bodyThump: {fileID: 8300000, guid: de2f7f74c7a22aa49b2468163cbaa666, type: 3}
   flatLine: {fileID: 8300000, guid: 3e41d24692547dc44a1b9913ccd636ae, type: 3}
   heartBeat: {fileID: 8300000, guid: 8c87a436624c4264dbd92096c00e9792, type: 3}
+  hurt: 0
   health: 0
   deatherer: 0
+  currentSector: 1
 --- !u!1 &8599200655422509535
 GameObject:
   m_ObjectHideFlags: 0

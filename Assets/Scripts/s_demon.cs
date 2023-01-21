@@ -10,17 +10,13 @@ public class s_demon : MonoBehaviour
     public Material mat;
     public GameObject player;
     public Animator anim;
+    public AudioSource audio;
+    public AudioClip giggle;
+    
+    public bool isGhostActive = false;
 
     public string currentSector;
-    public bool isVisibleToPlayer;
-    public bool isHeartbeat = false;
 
-    private Renderer renderer;
-
-    private void Start()
-    {
-        
-    }
 
     private void Update()
     {
@@ -30,34 +26,12 @@ public class s_demon : MonoBehaviour
         eulerAngles.z = 0;
 
         transform.rotation = Quaternion.Euler(eulerAngles);
-
-        if (GetComponentInChildren<SkinnedMeshRenderer>().isVisible)
-        {
-            isVisibleToPlayer = true;
-            player.GetComponent<s_player>().health += Time.deltaTime / 4;
-        }
-        else
-        {
-            isVisibleToPlayer = false;
-            player.GetComponent<s_player>().health -= Time.deltaTime / 8;
-            
-        }
     }
-
-    private void OnBecameVisible()
-    {
-        player.GetComponent<AudioSource>().PlayOneShot(player.GetComponent<s_player>().heartBeat);
-    }
-
-    private void OnBecameInvisible()
-    {
-        player.GetComponent<AudioSource>().Stop();
-    }
-
+    
     public void Spawn()
     {
+        audio.PlayOneShot(giggle);
         StartCoroutine(Spawner());
-        
     }
 
     public void Despawn()
@@ -75,7 +49,7 @@ public class s_demon : MonoBehaviour
     
     
 
-        IEnumerator Spawner()
+    IEnumerator Spawner()
     {
         for (float i = 0; i < 0.35f; i += Time.deltaTime / 2)
         {
@@ -90,6 +64,8 @@ public class s_demon : MonoBehaviour
 
     IEnumerator Despawner()
     {
+        player.GetComponent<s_player>().hurt = false;
+        player.GetComponent<AudioSource>().Stop();
         yield return new WaitForSeconds(2);
         for (float i = 0.35f; i > 0; i -= Time.deltaTime / 2)
         {
@@ -99,10 +75,13 @@ public class s_demon : MonoBehaviour
 
         transform.position = new Vector3(100, 100, 100);
         gameObject.SetActive(false);
+        
     }
     
     IEnumerator LightDespawner()
     {
+        player.GetComponent<s_player>().hurt = false;
+        player.GetComponent<AudioSource>().Stop();
         anim.SetTrigger("scare");
         yield return new WaitForSeconds(1);
         for (float i = 0.35f; i > 0; i -= Time.deltaTime / 2)
@@ -113,18 +92,35 @@ public class s_demon : MonoBehaviour
         transform.position = new Vector3(100, 100, 100);
         currentSector = null;
         gameObject.SetActive(false);
-        isVisibleToPlayer = false;
+        isGhostActive = false;
+
 
     }
 
     private void OnTriggerStay(Collider other)
     {
-        currentSector = other.name;
+        if (other.tag == "Sector")
+        {
+            currentSector = other.name;
+        }
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
-        currentSector = null;
+        if (other.tag == "Sector")
+        {
+            currentSector = null;
+        }
+        
     }
-    
+
+    public void Giggle()
+    {
+        if (!isGhostActive)
+        {
+            audio.PlayOneShot(giggle);
+            isGhostActive = true;
+        }
+    }
 }

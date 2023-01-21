@@ -28,8 +28,10 @@ public class s_player : MonoBehaviour
     private float rotationX;
     private LayerMask layerMask;
 
+    public bool hurt = false;
     public float health = 0;
     public float deatherer = 0;
+    public string currentSector;
     
 
     #endregion
@@ -193,6 +195,15 @@ public class s_player : MonoBehaviour
 
     public void HandleHealth()
     {
+        if (hurt)
+        {
+            health += Time.deltaTime / 4;
+        }
+        else
+        {
+            health -= Time.deltaTime;
+        }
+        
         ui.GetComponent<s_ui>().deatherer.color = new Color(1, 1, 1, health);
         cam.GetComponent<Camera>().fieldOfView = 60 - (health * 20);
         
@@ -249,8 +260,25 @@ public class s_player : MonoBehaviour
 
     }
 
-    
-    
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        currentSector = other.name;
+        if (other.CompareTag("Demon"))
+        {
+            hurt = true;
+            audioSource.clip = heartBeat;
+            audioSource.Play();
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Demon"))
+        {
+            hurt = false;
+            audioSource.Stop();
+        }
+    }
+
     #endregion
 }
