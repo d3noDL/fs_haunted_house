@@ -27,7 +27,9 @@ public class s_player : MonoBehaviour
 
     private float rotationX;
     private LayerMask layerMask;
+    private bool invOpen;
 
+    public GameObject inv;
     public bool hurt = false;
     public float health = 0;
     public float deatherer = 0;
@@ -57,6 +59,7 @@ public class s_player : MonoBehaviour
             HandleAnimation();
             HandleHealth();
         }
+        Debug.DrawRay(cam.transform.position, cam.transform.forward, Color.red, 1.5f);
     }
 
     #region FunctionsAndCoroutines
@@ -78,7 +81,7 @@ public class s_player : MonoBehaviour
         var lookX = Input.GetAxis("Mouse X");
         
         rotationX += -lookY * lookSensitivity;
-        rotationX = Mathf.Clamp(rotationX, -45, 45);
+        rotationX = Mathf.Clamp(rotationX, -60, 60);
         cam.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
         transform.rotation *= Quaternion.Euler(0, lookX * lookSensitivity, 0);
         
@@ -86,8 +89,24 @@ public class s_player : MonoBehaviour
 
     public void HandleInput()
     {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (!invOpen)
+            {
+                inv.SetActive(true);
+                invOpen = true;
+            }
+            else
+            {
+                inv.SetActive(false);
+                invOpen = false;
+            }
+
+            
+        }
+        
         RaycastHit hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 1.5f, LayerMask.GetMask("Default")))
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit, 2f, LayerMask.GetMask("Default")))
         {
             switch (hit.transform.tag)
             {

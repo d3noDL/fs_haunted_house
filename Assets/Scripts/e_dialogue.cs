@@ -14,7 +14,8 @@ public class e_dialogue : MonoBehaviour
     [SerializeField] private string[] 
         dOpening, dMotherIntro, dMotherFirst, dMotherStayHere, 
         dMotherYouCanLeave, dTwinPikovitLost, dTwinPikovitFound, 
-        dTwinControllerLost, dTwinControllerFound;
+        dTwinControllerLost, dTwinControllerFound, 
+        itemi_key, itemi_keyBedroom, itemi_pikovit, itemi_wrench, itemi_nes;
     
 
     private string[] dialogue;
@@ -47,6 +48,21 @@ public class e_dialogue : MonoBehaviour
     {
         switch (_dName)
         {
+            case "itemi_key":
+                dialogue = itemi_key;
+                break;
+            case "itemi_keyBedroom":
+                dialogue = itemi_keyBedroom;
+                break;
+            case "itemi_wrench":
+                dialogue = itemi_wrench;
+                break;
+            case "itemi_pikovit":
+                dialogue = itemi_pikovit;
+                break;
+            case "itemi_nes":
+                dialogue = itemi_nes;
+                break;
             case "opening":
                 dialogue = dOpening;
                 break;

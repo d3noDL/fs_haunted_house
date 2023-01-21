@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7ec9f43-e737-4772-a970-9665f795cb5b" name="Changes" comment="" />
+    <list default="true" id="f7ec9f43-e737-4772-a970-9665f795cb5b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/M&amp;T/ghostMom.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/M&amp;T/ghostMom.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/M&amp;T/props2.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/M&amp;T/props2.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PS1_tex.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PS1_tex.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/e_dialogue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/e_dialogue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/s_player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/s_player.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,7 +16,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/s_begin.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/s_warning.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -63,10 +69,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="14584">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="14584" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -88,6 +94,7 @@
       <workItem from="1674144239167" duration="8560000" />
       <workItem from="1674193316132" duration="30093000" />
       <workItem from="1674307998860" duration="4708000" />
+      <workItem from="1674322514557" duration="11908000" />
     </task>
     <servers />
   </component>
