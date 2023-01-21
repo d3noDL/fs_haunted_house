@@ -20,10 +20,7 @@ public class s_begin : MonoBehaviour
         mom.SetActive(true);
         yield return new WaitForSeconds(1);
         dialogue.Talk("motherIntro");
-    }
+        yield return new WaitForSeconds(5);
 
-    public void OnDialogueEnd()
-    {
-        trigger2.SetActive(true);
     }
 }

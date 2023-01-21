@@ -152,6 +152,15 @@ public class s_player : MonoBehaviour
                     }
                     ui.GetComponent<s_ui>().SetPointer("Talk");
                     break;
+                    
+                case "DoorPikovit":
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        Debug.Log("Pikovit!");
+                        ui.GetComponent<e_dialogue>().Talk("twinPikovitLost");
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Talk");
+                    break;
 
                 
                 default:

@@ -13,16 +13,19 @@ public class e_dialogue : MonoBehaviour
     [SerializeField] public GameObject panel, pointer;
     [SerializeField] private string[] 
         dOpening, dMotherIntro, dMotherFirst, dMotherStayHere, 
-        dMotherYouCanLeave, dMotherDemonFaceLight, 
+        dMotherYouCanLeave, dTwinPikovitLost, dTwinPikovitFound, 
         dTwinControllerLost, dTwinControllerFound;
-
-    public GameObject cut1;
-    public UnityEvent dialoguePartEnd;
+    
 
     private string[] dialogue;
     int pos = 0;
-    private bool isRunning = false;
-    
+    public bool isRunning = false;
+
+
+    private void Update()
+    {
+        
+    }
 
     public void Talk(string dName)
     {
@@ -59,8 +62,11 @@ public class e_dialogue : MonoBehaviour
             case "motherYouCanLeave":
                 dialogue = dMotherYouCanLeave;
                 break;
-            case "motherDemonFaceLight":
-                dialogue = dMotherDemonFaceLight;
+            case "twinPikovitLost":
+                dialogue = dTwinPikovitLost;
+                break;
+            case "twinPikovitFound":
+                dialogue = dTwinPikovitFound;
                 break;
             case "twinControllerLost":
                 dialogue = dTwinControllerLost;
@@ -77,6 +83,16 @@ public class e_dialogue : MonoBehaviour
             textObject.text += c;
             yield return new WaitForSeconds(0.05f);
         }
+        
+        if (Input.GetMouseButton(0))
+        {
+            isRunning = false;
+            pos = 0;
+            panel.SetActive(false);
+            pointer.SetActive(true);
+            S_MAIN.i.player.isActive = true;
+            StopAllCoroutines();
+        }
 
         yield return new WaitForSeconds(2);
         textObject.text = "";
@@ -88,11 +104,11 @@ public class e_dialogue : MonoBehaviour
         }
         else
         {
-            dialoguePartEnd.Invoke();
             isRunning = false;
             panel.SetActive(false);
             pointer.SetActive(true);
             S_MAIN.i.player.isActive = true;
+            StopAllCoroutines();
             yield break;
         }
         

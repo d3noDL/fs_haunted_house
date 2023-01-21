@@ -30,14 +30,11 @@ public class s_warning : MonoBehaviour
         mom.transform.rotation = Quaternion.Euler(0, 90, 0);
         yield return new WaitForSeconds(1);
         dialogue.Talk("motherStayHere");
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
+        StartCoroutine(Despawn());
         
     }
-
-    public void OnDialogueEnd()
-    {
-        StartCoroutine(Despawn());
-    }
+    
 
     IEnumerator Despawn()
     {
