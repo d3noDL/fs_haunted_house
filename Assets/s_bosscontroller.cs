@@ -13,6 +13,7 @@ public class s_bosscontroller : MonoBehaviour
         if (other.name == "Player")
         {
             player.hurt = true;
+            S_MAIN.i.PlayMusic(6);
         }
     }
 
@@ -21,6 +22,7 @@ public class s_bosscontroller : MonoBehaviour
         if (other.name == "PLayer")
         {
             player.hurt = false;
+            S_MAIN.i.StopMusic();
         }
     }
 }

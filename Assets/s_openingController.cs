@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class s_openingController : MonoBehaviour
 {
 
     public TMP_Text textObject;
     public string[] dialogue;
+    public GameObject dialog;
+    public AudioSource audio;
+    public AudioClip openDoor;
 
     private int pos = 0;
     
@@ -16,10 +20,15 @@ public class s_openingController : MonoBehaviour
     void Start()
     {
         StartCoroutine(OpeningDialog());
+        dialog.SetActive(true);
+        audio.Play();
     }
 
+    
     IEnumerator OpeningDialog()
     {
+        
+        
         foreach (char c in dialogue[pos])
         {
             textObject.text += c;
@@ -36,8 +45,19 @@ public class s_openingController : MonoBehaviour
         }
         else
         {
-            // Go to game
+            audio.Stop();
+            dialog.SetActive(false);
+            StartCoroutine(Change());
+
         }
+    }
+
+    IEnumerator Change()
+    {
+        
+        audio.PlayOneShot(openDoor);
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("Main");
     }
     
     
