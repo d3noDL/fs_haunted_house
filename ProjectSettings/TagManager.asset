@@ -19,6 +19,7 @@ TagManager:
   - BedNotMove
   - BedMove
   - Wardrobe
+  - Remains
   layers:
   - Default
   - TransparentFX

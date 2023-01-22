@@ -10,13 +10,14 @@ using UnityEngine.Events;
 public class e_dialogue : MonoBehaviour
 {
     [SerializeField] private TMP_Text textObject;
-    [SerializeField] public GameObject panel, pointer;
+    [SerializeField] public GameObject panel, pointer, sectors;
     [SerializeField] private string[] 
         dOpening, dMotherIntro, dMotherFirst, dMotherStayHere, 
         dMotherWarning, dTwinPikovitLost, dTwinPikovitFound, 
         dTwinControllerLost, dTwinControllerFound, 
         itemi_key, itemi_keyBedroom, itemi_pikovit, itemi_wrench, itemi_nes,
-        doorLocked, keyBroke, needTool, tooHeavy, bedNotMove;
+        doorLocked, keyBroke, needTool, tooHeavy, bedNotMove,
+        remains, motherFinal, twingGiveforDemon, twinDemonReleased, demonGiveController;
     
 
     private string[] dialogue;
@@ -33,6 +34,7 @@ public class e_dialogue : MonoBehaviour
     {
         if (!isRunning)
         {
+            sectors.SetActive(false);
             S_MAIN.i.player.isActive = false;
             panel.SetActive(true);
             pointer.SetActive(false);
@@ -49,6 +51,21 @@ public class e_dialogue : MonoBehaviour
     {
         switch (_dName)
         {
+            case "demonGiveController":
+                dialogue = demonGiveController;
+                break;
+            case "twinDemonReleased":
+                dialogue = twinDemonReleased;
+                break;
+            case "twinGiveForDemon":
+                dialogue = twingGiveforDemon;
+                break;
+            case "remains":
+                dialogue = remains;
+                break;
+            case "motherFinal":
+                dialogue = motherFinal;
+                break;
             case "bedNotMove":
                 dialogue = bedNotMove;
                 break;
@@ -136,6 +153,10 @@ public class e_dialogue : MonoBehaviour
         }
         else
         {
+            if (S_MAIN.i.seenGhost)
+            {
+                sectors.SetActive(true);
+            }
             isRunning = false;
             panel.SetActive(false);
             pointer.SetActive(true);

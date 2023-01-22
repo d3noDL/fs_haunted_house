@@ -29,7 +29,7 @@ public class s_player : MonoBehaviour
     private LayerMask layerMask;
     private bool invOpen;
 
-    public GameObject inv, trigger31, trigger32;
+    public GameObject inv, trigger31, trigger32, secretDoor;
     public s_bed moveBed;
     public bool hurt = false;
     public float health = 0;
@@ -124,14 +124,7 @@ public class s_player : MonoBehaviour
                     ui.GetComponent<s_ui>().SetPointer("Interact");
                     break;
                         
-
-                case "GrandfatherClock":
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        Debug.Log("It keeps on ticking, it's driving me crazy");
-                    }
-                    ui.GetComponent<s_ui>().SetPointer("Check");
-                    break;
+                
                     
                 case "LightSwitch":
                     if (Input.GetMouseButtonDown(0))
@@ -154,7 +147,29 @@ public class s_player : MonoBehaviour
                 case "Twin":
                     if (Input.GetMouseButtonDown(0))
                     {
-                        ui.GetComponent<e_dialogue>().Talk("twinControllerLost");
+                        if (!S_MAIN.i.hasNesController && !S_MAIN.i.hasMap)
+                        {
+                            ui.GetComponent<e_dialogue>().Talk("twinControllerLost");
+                        }
+                        else if (S_MAIN.i.hasNesController && !S_MAIN.i.hasMap)
+                        {
+                            ui.GetComponent<e_dialogue>().Talk("twinControllerFound");
+                            S_MAIN.i.InventoryManager("i_map");
+                            secretDoor.SetActive(true);
+                            S_MAIN.i.RemoveFromInv("i_nes");
+                        }
+                        else if (S_MAIN.i.releaseMother && !S_MAIN.i.releaseDemon)
+                        {
+                            ui.GetComponent<e_dialogue>().Talk("twinGiveForDemon");
+                            S_MAIN.i.InventoryManager("i_nes");
+                        }
+                        else if (S_MAIN.i.releaseDemon)
+                        {
+                            // Release
+                        }
+
+
+
                     }
                     ui.GetComponent<s_ui>().SetPointer("Talk");
                     break;
@@ -164,7 +179,7 @@ public class s_player : MonoBehaviour
                     {
                         ui.GetComponent<e_dialogue>().Talk("tooHeavy");
                     }
-                    ui.GetComponent<s_ui>().SetPointer("Interact");
+                    ui.GetComponent<s_ui>().SetPointer("Check");
                     break;
                 
                 case "BedNotMove":
@@ -172,7 +187,7 @@ public class s_player : MonoBehaviour
                     {
                         ui.GetComponent<e_dialogue>().Talk("bedNotMove");
                     }
-                    ui.GetComponent<s_ui>().SetPointer("Interact");
+                    ui.GetComponent<s_ui>().SetPointer("Check");
                     break;
                 
                 case "BedMove":
@@ -191,6 +206,14 @@ public class s_player : MonoBehaviour
                     }
                     ui.GetComponent<s_ui>().SetPointer("Talk");
                     break;
+                
+                case "Remains":
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        ui.GetComponent<e_dialogue>().Talk("remains");
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Check");
+                    break;
                     
                 case "DoorPikovit":
                     if (Input.GetMouseButtonDown(0))
@@ -204,6 +227,7 @@ public class s_player : MonoBehaviour
                             ui.GetComponent<e_dialogue>().Talk("twinPikovitFound");
                             trigger31.SetActive(false);
                             trigger32.SetActive(false);
+                            S_MAIN.i.RemoveFromInv("i_pikovit");
                         }
                         
                     }
@@ -223,13 +247,15 @@ public class s_player : MonoBehaviour
                             ui.GetComponent<e_dialogue>().Talk("keyBroke");
                             S_MAIN.i.isEntranceBroken = true;
                             S_MAIN.i.audioSource.PlayOneShot(S_MAIN.i.keyBreak);
+                            S_MAIN.i.RemoveFromInv("i_key");
                         }
-                        else if (S_MAIN.i.hasKey && S_MAIN.i.isEntranceBroken)
+                        else if (S_MAIN.i.isEntranceBroken)
                         {
                             ui.GetComponent<e_dialogue>().Talk("needTool");
                         }
                         else if (S_MAIN.i.isEntranceBroken && S_MAIN.i.hasWrench)
                         {
+                            S_MAIN.i.RemoveFromInv("i_wrench");
                             // End game;
                         }
                     }

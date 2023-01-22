@@ -17,6 +17,9 @@ public class s_bed : MonoBehaviour
         wardrobe.SetActive(false);
         wardrobeMoved.SetActive(true);
         bed2moved.SetActive(true);
+        GetComponent<BoxCollider>().enabled = false;
+        bed2moved.GetComponent<BoxCollider>().enabled = false;
+        bed1moved.GetComponent<BoxCollider>().enabled = false;
     }
     
 }

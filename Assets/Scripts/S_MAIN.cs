@@ -19,7 +19,11 @@ public class S_MAIN : MonoBehaviour
     public bool hasBedroomKey = false;
     public bool hasNesController = false;
     public bool hasWrench = false;
+    public bool hasMap = false;
     public bool isEntranceBroken = false;
+    public bool releaseMother = false;
+    public bool releaseTwin = false;
+    public bool releaseDemon = false;
 
     private void Awake()
     {
@@ -81,6 +85,42 @@ public class S_MAIN : MonoBehaviour
                 break;
             case "i_wrench":
                 hasWrench = true;
+                break;
+            case "i_map":
+                hasMap = true;
+                break;
+        }
+    }
+
+    public void RemoveFromInv(string nm)
+    {
+        foreach (GameObject item in inv)
+        {
+            if (item.name == nm)
+            {
+                item.SetActive(false);
+            }
+        }
+
+        switch (nm)
+        {
+            case "i_key":
+                hasKey = false;
+                break;
+            case "i_pikovit":
+                hasPikovit = false;
+                break;
+            case "i_keyBedroom":
+                hasBedroomKey = false;
+                break;
+            case "i_nes":
+                hasNesController = false;
+                break;
+            case "i_wrench":
+                hasWrench = false;
+                break;
+            case "i_map":
+                hasMap = false;
                 break;
         }
     }
