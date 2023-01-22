@@ -15,7 +15,8 @@ public class e_dialogue : MonoBehaviour
         dOpening, dMotherIntro, dMotherFirst, dMotherStayHere, 
         dMotherWarning, dTwinPikovitLost, dTwinPikovitFound, 
         dTwinControllerLost, dTwinControllerFound, 
-        itemi_key, itemi_keyBedroom, itemi_pikovit, itemi_wrench, itemi_nes;
+        itemi_key, itemi_keyBedroom, itemi_pikovit, itemi_wrench, itemi_nes,
+        doorLocked, keyBroke, needTool, tooHeavy, bedNotMove;
     
 
     private string[] dialogue;
@@ -48,6 +49,21 @@ public class e_dialogue : MonoBehaviour
     {
         switch (_dName)
         {
+            case "bedNotMove":
+                dialogue = bedNotMove;
+                break;
+            case "tooHeavy":
+                dialogue = tooHeavy;
+                break;
+            case "doorLocked":
+                dialogue = doorLocked;
+                break;
+            case "keyBroke":
+                dialogue = keyBroke;
+                break;
+            case "needTool":
+                dialogue = needTool;
+                break;
             case "itemi_key":
                 dialogue = itemi_key;
                 break;

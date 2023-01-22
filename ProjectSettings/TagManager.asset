@@ -16,6 +16,9 @@ TagManager:
   - DoorPikovit
   - Demon
   - KeyItem
+  - BedNotMove
+  - BedMove
+  - Wardrobe
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,12 @@ public class S_MAIN : MonoBehaviour
     public AudioClip pickup;
 
     public bool seenGhost = false;
+    public bool hasPikovit = false;
+    public bool hasKey = false;
+    public bool hasBedroomKey = false;
+    public bool hasNesController = false;
+    public bool hasWrench = false;
+    public bool isEntranceBroken = false;
 
     private void Awake()
     {
@@ -57,6 +63,25 @@ public class S_MAIN : MonoBehaviour
                 item.SetActive(true);
                 audioSource.PlayOneShot(pickup);
             }
+        }
+
+        switch (nm)
+        {
+            case "i_key":
+                hasKey = true;
+                break;
+            case "i_pikovit":
+                hasPikovit = true;
+                break;
+            case "i_keyBedroom":
+                hasBedroomKey = true;
+                break;
+            case "i_nes":
+                hasNesController = true;
+                break;
+            case "i_wrench":
+                hasWrench = true;
+                break;
         }
     }
 }

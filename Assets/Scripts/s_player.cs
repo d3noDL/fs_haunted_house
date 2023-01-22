@@ -29,7 +29,7 @@ public class s_player : MonoBehaviour
     private LayerMask layerMask;
     private bool invOpen;
 
-    public GameObject inv;
+    public GameObject inv, trigger31, trigger32;
     public bool hurt = false;
     public float health = 0;
     public float deatherer = 0;
@@ -141,15 +141,7 @@ public class s_player : MonoBehaviour
                     }
                     ui.GetComponent<s_ui>().SetPointer("Interact");
                     break;
-                
-                case "EntranceDoor":
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        Debug.Log("It won't budge");
-                    }
-                    ui.GetComponent<s_ui>().SetPointer("Check");
-                    break;
-                
+
                 case "Breaker":
                     if (Input.GetMouseButtonDown(0))
                     {
@@ -166,6 +158,30 @@ public class s_player : MonoBehaviour
                     ui.GetComponent<s_ui>().SetPointer("Talk");
                     break;
                 
+                case "Wardrobe":
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        ui.GetComponent<e_dialogue>().Talk("tooHeavy");
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Interact");
+                    break;
+                
+                case "BedNotMove":
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        ui.GetComponent<e_dialogue>().Talk("bedNotMove");
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Interact");
+                    break;
+                
+                case "BedMove":
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        //Move beds
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Interact");
+                    break;
+                
                 case "Mom":
                     if (Input.GetMouseButtonDown(0))
                     {
@@ -177,12 +193,45 @@ public class s_player : MonoBehaviour
                 case "DoorPikovit":
                     if (Input.GetMouseButtonDown(0))
                     {
-                        Debug.Log("Pikovit!");
-                        ui.GetComponent<e_dialogue>().Talk("twinPikovitLost");
+                        if (!S_MAIN.i.hasPikovit)
+                        {
+                            ui.GetComponent<e_dialogue>().Talk("twinPikovitLost");
+                        }
+                        else
+                        {
+                            ui.GetComponent<e_dialogue>().Talk("twinPikovitFound");
+                            trigger31.SetActive(false);
+                            trigger32.SetActive(false);
+                        }
+                        
                     }
                     ui.GetComponent<s_ui>().SetPointer("Talk");
                     break;
                 
+                case "EntranceDoor":
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        if (!S_MAIN.i.hasKey)
+                        {
+                            ui.GetComponent<e_dialogue>().Talk("doorLocked");
+                        }
+                        else if (S_MAIN.i.hasKey && !S_MAIN.i.isEntranceBroken)
+                        {
+                            ui.GetComponent<e_dialogue>().Talk("keyBroke");
+                            S_MAIN.i.isEntranceBroken = true;
+                        }
+                        else if (S_MAIN.i.hasKey && S_MAIN.i.isEntranceBroken)
+                        {
+                            ui.GetComponent<e_dialogue>().Talk("needTool");
+                        }
+                        else if (S_MAIN.i.isEntranceBroken && S_MAIN.i.hasWrench)
+                        {
+                            // End game;
+                        }
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Interact");
+                    break;
+
                 case "KeyItem":
                     if (Input.GetMouseButtonDown(0))
                     {

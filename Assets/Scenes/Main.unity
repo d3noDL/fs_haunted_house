@@ -8290,6 +8290,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cabinet_3 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: df7f243bd429cd5408f1ad2978c21cec, type: 3}
+      propertyPath: m_TagString
+      value: Wardrobe
+      objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: df7f243bd429cd5408f1ad2978c21cec, type: 3}
       propertyPath: m_RootOrder
       value: 50
@@ -8386,7 +8390,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 294492833}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 0.80081224, z: 2.5558794}
@@ -9227,9 +9231,10 @@ GameObject:
   m_Component:
   - component: {fileID: 333850821}
   - component: {fileID: 333850822}
+  - component: {fileID: 333850823}
   m_Layer: 0
   m_Name: bed_1 (1)
-  m_TagString: Untagged
+  m_TagString: BedMove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9261,11 +9266,28 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333850820}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.8445601, y: 2.2110674, z: 3.2740002}
   m_Center: {x: 0.023902655, y: 0.015935063, z: 1.1370001}
+--- !u!114 &333850823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333850820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e260265bac01eb1478925cebe4b3548f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bed1: {fileID: 4423621502869520321}
+  bed1moved: {fileID: 2134583188}
+  wardrobe: {fileID: 294492833}
+  wardrobeMoved: {fileID: 1059613033}
+  bed2moved: {fileID: 938416757}
 --- !u!1 &338150572
 GameObject:
   m_ObjectHideFlags: 0
@@ -14623,12 +14645,16 @@ MonoBehaviour:
   dTwinPikovitLost:
   - 'Little Girl: Go away.'
   - 'Little Girl: I will not leave until I get my syrup'
-  dTwinPikovitFound: []
+  dTwinPikovitFound:
+  - 'Little Girl: Is.. is that Pikovit? Please, give it to me!'
   dTwinControllerLost:
-  - 'Young Girl: My sister... She threw my Nintendo controller under the bed...'
+  - 'Young Girl: My twin sister... She threw my Nintendo controller under the bed...'
   - 'Young Girl: She is such a meany, no wonder mom hates her.'
+  - 'Young Girl: Mom made our rooms the same for a reason.. So We don''t have to
+    share.'
   - 'Young Girl: I just want to play my game...'
-  dTwinControllerFound: []
+  dTwinControllerFound:
+  - 
   itemi_key:
   - '> Entrance key GET'
   itemi_keyBedroom:
@@ -14639,6 +14665,16 @@ MonoBehaviour:
   - '> Wrench GET'
   itemi_nes:
   - '> NES controller GET'
+  doorLocked:
+  - '> The door is locked.'
+  keyBroke:
+  - '> The key broke.'
+  needTool:
+  - '> I could twist the key if I had a proper tool.'
+  tooHeavy:
+  - '> It''s too heavy to move by hand.'
+  bedNotMove:
+  - '> The wardrobe fell on the bed, I can''t move it.'
   isRunning: 0
 --- !u!1 &581588737
 GameObject:
@@ -37597,6 +37633,12 @@ MonoBehaviour:
   - {fileID: 288733878}
   pickup: {fileID: 8300000, guid: e951ea0333dfeb64c9098d02c73e5dd7, type: 3}
   seenGhost: 0
+  hasPikovit: 0
+  hasKey: 0
+  hasBedroomKey: 0
+  hasNesController: 0
+  hasWrench: 0
+  isEntranceBroken: 0
 --- !u!4 &1550158539
 Transform:
   m_ObjectHideFlags: 0
@@ -51487,7 +51529,7 @@ GameObject:
   - component: {fileID: 4423621502869873634}
   m_Layer: 0
   m_Name: bed_1
-  m_TagString: Untagged
+  m_TagString: BedNotMove
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51591,7 +51633,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4423621502869520321}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.7489494, y: 2.1632614, z: 3.8172014}
@@ -51974,6 +52016,14 @@ PrefabInstance:
       propertyPath: inv
       value: 
       objectReference: {fileID: 944392902}
+    - target: {fileID: 8569058148191319249, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
+      propertyPath: trigger31
+      value: 
+      objectReference: {fileID: 364475398}
+    - target: {fileID: 8569058148191319249, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
+      propertyPath: trigger32
+      value: 
+      objectReference: {fileID: 1838097635}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
 --- !u!1 &5586442869841453512
