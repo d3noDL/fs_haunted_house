@@ -26,15 +26,18 @@ public class s_ghostfirst : MonoBehaviour
     IEnumerator GhostFirst()
     {
         yield return new WaitForSeconds(1.2f);
-        player.isActive = false;
-        cam.transform.rotation = Quaternion.Euler(0, 15, 0);
-        pointer.SetActive(false);
-        yield return new WaitForSeconds(1.1f);
-        demon.audio.PlayOneShot(demon.giggle);
         demon.gameObject.SetActive(true);
-        demon.Spawn();
         demon.transform.position = new Vector3(1.5f, 0.65f, -6);
-        yield return new WaitForSeconds(5);
+        demon.Spawn();
+        player.isActive = false;
+        pointer.SetActive(false);
+        yield return new WaitForSeconds(1f);
+        for (float i = 90; i > 15; i -= Time.deltaTime * 100)
+        {
+            cam.transform.rotation = Quaternion.Euler(0, i, 0);
+            yield return null;
+        }
+        yield return new WaitForSeconds(4);
         light.Toggle();
         light.GetComponent<AudioSource>().Play();
         demon.LightDespawn();

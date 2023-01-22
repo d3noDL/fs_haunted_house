@@ -30,6 +30,7 @@ public class s_player : MonoBehaviour
     private bool invOpen;
 
     public GameObject inv, trigger31, trigger32;
+    public s_bed moveBed;
     public bool hurt = false;
     public float health = 0;
     public float deatherer = 0;
@@ -177,7 +178,8 @@ public class s_player : MonoBehaviour
                 case "BedMove":
                     if (Input.GetMouseButtonDown(0))
                     {
-                        //Move beds
+                        moveBed.MoveBed();
+                        S_MAIN.i.audioSource.PlayOneShot(S_MAIN.i.bedMove);
                     }
                     ui.GetComponent<s_ui>().SetPointer("Interact");
                     break;
@@ -214,11 +216,13 @@ public class s_player : MonoBehaviour
                         if (!S_MAIN.i.hasKey)
                         {
                             ui.GetComponent<e_dialogue>().Talk("doorLocked");
+                            S_MAIN.i.audioSource.PlayOneShot(S_MAIN.i.lockedDoor);
                         }
                         else if (S_MAIN.i.hasKey && !S_MAIN.i.isEntranceBroken)
                         {
                             ui.GetComponent<e_dialogue>().Talk("keyBroke");
                             S_MAIN.i.isEntranceBroken = true;
+                            S_MAIN.i.audioSource.PlayOneShot(S_MAIN.i.keyBreak);
                         }
                         else if (S_MAIN.i.hasKey && S_MAIN.i.isEntranceBroken)
                         {

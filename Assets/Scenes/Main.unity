@@ -9266,7 +9266,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 333850820}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.8445601, y: 2.2110674, z: 3.2740002}
@@ -9288,6 +9288,8 @@ MonoBehaviour:
   wardrobe: {fileID: 294492833}
   wardrobeMoved: {fileID: 1059613033}
   bed2moved: {fileID: 938416757}
+  ui: {fileID: 580149349}
+  player: {fileID: 1642010150}
 --- !u!1 &338150572
 GameObject:
   m_ObjectHideFlags: 0
@@ -37632,6 +37634,9 @@ MonoBehaviour:
   - {fileID: 88811717}
   - {fileID: 288733878}
   pickup: {fileID: 8300000, guid: e951ea0333dfeb64c9098d02c73e5dd7, type: 3}
+  lockedDoor: {fileID: 8300000, guid: 87b7487ac2b4ee647bbe5aa511555a8f, type: 3}
+  keyBreak: {fileID: 8300000, guid: 82af44b52cf5cd445b042ebbff9706b3, type: 3}
+  bedMove: {fileID: 8300000, guid: ea2006413738d3543b3744484843569a, type: 3}
   seenGhost: 0
   hasPikovit: 0
   hasKey: 0
@@ -50056,7 +50061,7 @@ PrefabInstance:
     - target: {fileID: 7513339463655821234, guid: 51f1878044b15144785dd21a46caf4e9, type: 3}
       propertyPath: lights.Array.data[0]
       value: 
-      objectReference: {fileID: 938209265}
+      objectReference: {fileID: 798688760}
     - target: {fileID: 7618840501549727790, guid: 51f1878044b15144785dd21a46caf4e9, type: 3}
       propertyPath: m_Name
       value: lightswitch (3)
@@ -52016,6 +52021,10 @@ PrefabInstance:
       propertyPath: inv
       value: 
       objectReference: {fileID: 944392902}
+    - target: {fileID: 8569058148191319249, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
+      propertyPath: moveBed
+      value: 
+      objectReference: {fileID: 333850823}
     - target: {fileID: 8569058148191319249, guid: 361c6965a93548e48998c9b3f4336117, type: 3}
       propertyPath: trigger31
       value: 

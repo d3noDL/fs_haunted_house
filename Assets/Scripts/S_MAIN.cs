@@ -11,7 +11,7 @@ public class S_MAIN : MonoBehaviour
     public AudioSource audioSource;
     public s_player player;
     public GameObject[] inv;
-    public AudioClip pickup;
+    public AudioClip pickup, lockedDoor, keyBreak, bedMove;
 
     public bool seenGhost = false;
     public bool hasPikovit = false;
