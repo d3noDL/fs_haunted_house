@@ -273,22 +273,11 @@ public class s_player : MonoBehaviour
                             ui.GetComponent<e_dialogue>().Talk("doorLocked");
                             S_MAIN.i.audioSource.PlayOneShot(S_MAIN.i.lockedDoor);
                         }
-                        else if (S_MAIN.i.hasKey && !S_MAIN.i.isEntranceBroken)
+                        else if (S_MAIN.i.hasKey)
                         {
-                            ui.GetComponent<e_dialogue>().Talk("keyBroke");
-                            S_MAIN.i.isEntranceBroken = true;
-                            S_MAIN.i.audioSource.PlayOneShot(S_MAIN.i.keyBreak);
-                            S_MAIN.i.RemoveFromInv("i_key");
+                            //end
                         }
-                        else if (!S_MAIN.i.hasKey && S_MAIN.i.isEntranceBroken)
-                        {
-                            ui.GetComponent<e_dialogue>().Talk("needTool");
-                        }
-                        else if (S_MAIN.i.isEntranceBroken && S_MAIN.i.hasWrench)
-                        {
-                            S_MAIN.i.RemoveFromInv("i_wrench");
-                            // End game;
-                        }
+                        
                     }
                     ui.GetComponent<s_ui>().SetPointer("Interact");
                     break;

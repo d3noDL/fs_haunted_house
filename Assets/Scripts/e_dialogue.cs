@@ -34,7 +34,6 @@ public class e_dialogue : MonoBehaviour
     {
         if (!isRunning)
         {
-            sectors.SetActive(false);
             S_MAIN.i.player.isActive = false;
             panel.SetActive(true);
             pointer.SetActive(false);
@@ -153,10 +152,6 @@ public class e_dialogue : MonoBehaviour
         }
         else
         {
-            if (S_MAIN.i.seenGhost)
-            {
-                sectors.SetActive(true);
-            }
             isRunning = false;
             panel.SetActive(false);
             pointer.SetActive(true);
