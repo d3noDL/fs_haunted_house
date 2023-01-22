@@ -2585,19 +2585,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textObject: {fileID: 1218217838}
   dialogue:
-  - '> September 21st, 1996'
-  - '> Multiple reports were recieved of noise coming out of an now empty house.'
-  - '> Previous owners moved out in a hurry recently, leaving everything behind.'
-  - 
-  - '> An investigation will follow'
-  - '   '
-  - '> September 22nd, 1996'
-  - '> 23:35 pm'
-  - '> I am at the site of disturbances. Will enter the house to investigate.'
+  - '> September 23rd, 1996 04:16 am'
+  - '> I barely escaped this ordeal alive.'
+  - '> Though I constantly have a feeling that I am beeing followed...'
+  - '> Am I going crazy?'
   dialog: {fileID: 1563151867}
   audio: {fileID: 1838565920}
   openDoor: {fileID: 8300000, guid: 0b543795eeada864298f97d6d095da3b, type: 3}
-  scene: Main
+  scene: Menu
 --- !u!4 &1838565919
 Transform:
   m_ObjectHideFlags: 0
@@ -2623,7 +2618,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 94f5fc9a6fa666c40bfd23fae513d52f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c221a8ab64f36364eb34919988108f8e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

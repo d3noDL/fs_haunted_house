@@ -13,6 +13,7 @@ public class s_openingController : MonoBehaviour
     public GameObject dialog;
     public AudioSource audio;
     public AudioClip openDoor;
+    public string scene;
 
     private int pos = 0;
     
@@ -57,7 +58,7 @@ public class s_openingController : MonoBehaviour
         
         audio.PlayOneShot(openDoor);
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene(scene);
     }
     
     

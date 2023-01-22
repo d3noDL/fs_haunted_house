@@ -90,7 +90,7 @@ public class s_player : MonoBehaviour
 
     public void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (!invOpen)
             {
@@ -275,7 +275,22 @@ public class s_player : MonoBehaviour
                         }
                         else if (S_MAIN.i.hasKey)
                         {
-                            //end
+                            if (S_MAIN.i.releaseMother && S_MAIN.i.releaseDemon && S_MAIN.i.releaseTwin)
+                            {
+                                SceneManager.LoadScene("TrueEnding");
+                            }
+                            else if (S_MAIN.i.releaseMother && S_MAIN.i.releaseDemon && !S_MAIN.i.releaseTwin)
+                            {
+                                SceneManager.LoadScene("GoodEnding");
+                            }
+                            else if (S_MAIN.i.releaseMother && !S_MAIN.i.releaseDemon && !S_MAIN.i.releaseTwin)
+                            {
+                                SceneManager.LoadScene("BadEnding");
+                            }
+                            else if (!S_MAIN.i.releaseMother && !S_MAIN.i.releaseDemon && !S_MAIN.i.releaseTwin)
+                            {
+                                SceneManager.LoadScene("BadEnding");
+                            }
                         }
                         
                     }
@@ -384,7 +399,7 @@ public class s_player : MonoBehaviour
         yield return new WaitForSeconds(2);
         ui.GetComponent<s_ui>().Fader(false);
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Menu");
 
     }
 
