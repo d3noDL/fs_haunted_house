@@ -7,22 +7,17 @@ using UnityEngine;
 public class S_MAIN : MonoBehaviour
 {
     public static S_MAIN i;
-
     public AudioClip[] musicClip;
-
-    private AudioSource audioSource;
-
+    public AudioSource audioSource;
     public s_player player;
-
     public GameObject[] inv;
-
     public AudioClip pickup;
+
+    public bool seenGhost = false;
 
     private void Awake()
     {
         i = this;
-
-        audioSource = GetComponent<AudioSource>();
     }
 
     public void PlayMusic(int clip)

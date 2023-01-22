@@ -66,6 +66,7 @@ public class e_breaker : MonoBehaviour
                 }
             }
 
+            S_MAIN.i.PlayMusic(3);
             mainLight.SetActive(false);
             isOn = false;
             numberOfLightsOn = 0;
@@ -87,6 +88,7 @@ public class e_breaker : MonoBehaviour
                 }
             }
 
+            S_MAIN.i.StopMusic();
             mainLight.SetActive(true);
             isOn = true;
             numberOfLightsOn = 0;

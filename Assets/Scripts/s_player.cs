@@ -51,15 +51,15 @@ public class s_player : MonoBehaviour
     
     void Update()
     {
-        if (isActive)
+        if (!isActive)
         {
-            HandleMovement();
-            HandleLook();
-            HandleInput();
-            HandleAnimation();
-            HandleHealth();
+            return;
         }
-        Debug.DrawRay(cam.transform.position, cam.transform.forward, Color.red, 1.5f);
+        HandleMovement();
+        HandleLook();
+        HandleInput();
+        HandleAnimation();
+        HandleHealth();
     }
 
     #region FunctionsAndCoroutines

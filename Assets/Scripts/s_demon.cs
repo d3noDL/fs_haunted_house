@@ -26,10 +26,17 @@ public class s_demon : MonoBehaviour
         eulerAngles.z = 0;
 
         transform.rotation = Quaternion.Euler(eulerAngles);
+        
     }
     
     public void Spawn()
     {
+        if (!S_MAIN.i.seenGhost)
+        {
+            S_MAIN.i.PlayMusic(2);
+            S_MAIN.i.seenGhost = true;
+        }
+        
         audio.PlayOneShot(giggle);
         StartCoroutine(Spawner());
     }
@@ -41,6 +48,7 @@ public class s_demon : MonoBehaviour
 
     public void LightDespawn()
     {
+        S_MAIN.i.StopMusic();
         StopCoroutine(Spawner());
         StopCoroutine(Despawner());
         StartCoroutine(LightDespawner());
@@ -56,6 +64,7 @@ public class s_demon : MonoBehaviour
             mat.color = new Color(1, 1, 1, i);
             yield return null;
         }
+        
         yield return new WaitForSeconds(2);
         anim.SetTrigger("point");
         yield return new WaitForSeconds(2);
@@ -96,25 +105,7 @@ public class s_demon : MonoBehaviour
 
 
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Sector")
-        {
-            currentSector = other.name;
-        }
-        
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Sector")
-        {
-            currentSector = null;
-        }
-        
-    }
-
+    
     public void Giggle()
     {
         if (!isGhostActive)

@@ -13,7 +13,7 @@ public class e_dialogue : MonoBehaviour
     [SerializeField] public GameObject panel, pointer;
     [SerializeField] private string[] 
         dOpening, dMotherIntro, dMotherFirst, dMotherStayHere, 
-        dMotherYouCanLeave, dTwinPikovitLost, dTwinPikovitFound, 
+        dMotherWarning, dTwinPikovitLost, dTwinPikovitFound, 
         dTwinControllerLost, dTwinControllerFound, 
         itemi_key, itemi_keyBedroom, itemi_pikovit, itemi_wrench, itemi_nes;
     
@@ -32,9 +32,9 @@ public class e_dialogue : MonoBehaviour
     {
         if (!isRunning)
         {
+            S_MAIN.i.player.isActive = false;
             panel.SetActive(true);
             pointer.SetActive(false);
-            S_MAIN.i.player.isActive = false;
             pos = 0;
             textObject.text = "";
             StartCoroutine(StartTalking(dName));
@@ -75,8 +75,8 @@ public class e_dialogue : MonoBehaviour
             case "motherStayHere":
                 dialogue = dMotherStayHere;
                 break;
-            case "motherYouCanLeave":
-                dialogue = dMotherYouCanLeave;
+            case "motherWarning":
+                dialogue = dMotherWarning;
                 break;
             case "twinPikovitLost":
                 dialogue = dTwinPikovitLost;

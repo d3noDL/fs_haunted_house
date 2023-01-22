@@ -13,6 +13,7 @@ public class s_demonSpawner : MonoBehaviour
     public GameObject[] spawnPoints;
     public bool isInSector;
     public BoxCollider box;
+    public bool lightIsOn;
     
 
 
@@ -41,6 +42,7 @@ public class s_demonSpawner : MonoBehaviour
             
             demon.transform.position = spawnPosition;
             demon.SetActive(true);
+            demon.GetComponent<s_demon>().currentSector = gameObject.name;
             demon.GetComponent<s_demon>().Spawn();
 
         }
@@ -85,6 +87,10 @@ public class s_demonSpawner : MonoBehaviour
             // demon.GetComponent<s_demon>().LightDespawn();
         }
     }
+
+    public void LightOn() => lightIsOn = true;
+    public void LightOff() => lightIsOn = false;
+
 
 
 }
