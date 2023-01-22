@@ -23,6 +23,7 @@ public class s_warning : MonoBehaviour
 
     IEnumerator Warning()
     {
+        S_MAIN.i.StopMusic();
         yield return new WaitForSeconds(1.1f);
         player.GetComponent<s_player>().isActive = false;
         lightswitch.Toggle();

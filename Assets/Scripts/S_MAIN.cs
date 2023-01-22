@@ -79,6 +79,7 @@ public class S_MAIN : MonoBehaviour
                 break;
             case "i_keyBedroom":
                 hasBedroomKey = true;
+                seenGhost = false;
                 break;
             case "i_nes":
                 hasNesController = true;

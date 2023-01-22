@@ -29,13 +29,13 @@ public class s_player : MonoBehaviour
     private LayerMask layerMask;
     private bool invOpen;
 
-    public GameObject inv, trigger31, trigger32, secretDoor;
+    public GameObject inv, trigger31, trigger32, secretDoor, demonBoss;
     public s_bed moveBed;
     public bool hurt = false;
     public float health = 0;
     public float deatherer = 0;
     public string currentSector;
-    
+
 
     #endregion
     
@@ -124,7 +124,25 @@ public class s_player : MonoBehaviour
                     ui.GetComponent<s_ui>().SetPointer("Interact");
                     break;
                         
-                
+                case "BedroomDoor":
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        if (S_MAIN.i.hasBedroomKey)
+                        {
+                            StartCoroutine(ChangeRoom(
+                                hit.transform.GetComponent<s_door>().connectedDoor.GetComponent<s_door>().spawn.transform
+                                    .position,
+                                hit.transform.GetComponent<s_door>().connectedDoor.GetComponent<s_door>().spawn.transform
+                                    .rotation, hit.transform.gameObject));
+                        }
+                        else
+                        {
+                            ui.GetComponent<e_dialogue>().Talk("doorLocked");
+                            S_MAIN.i.audioSource.PlayOneShot(S_MAIN.i.lockedDoor);
+                        }
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Interact");
+                    break;
                     
                 case "LightSwitch":
                     if (Input.GetMouseButtonDown(0))
@@ -158,20 +176,33 @@ public class s_player : MonoBehaviour
                             secretDoor.SetActive(true);
                             S_MAIN.i.RemoveFromInv("i_nes");
                         }
-                        else if (S_MAIN.i.releaseMother && !S_MAIN.i.releaseDemon)
+                        else if (S_MAIN.i.releaseMother && !S_MAIN.i.releaseDemon && !S_MAIN.i.hasNesController)
                         {
                             ui.GetComponent<e_dialogue>().Talk("twinGiveForDemon");
                             S_MAIN.i.InventoryManager("i_nes");
                         }
-                        else if (S_MAIN.i.releaseDemon)
+                        else if (S_MAIN.i.releaseDemon && !S_MAIN.i.releaseTwin)
                         {
-                            // Release
+                            ui.GetComponent<e_dialogue>().Talk("demonGiveController");
+                            S_MAIN.i.releaseTwin = true;
                         }
 
 
 
                     }
                     ui.GetComponent<s_ui>().SetPointer("Talk");
+                    break;
+                
+                case "DemonBoss":
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        if (S_MAIN.i.hasNesController)
+                        {
+                            ui.GetComponent<e_dialogue>().Talk("twinDemonReleased");
+                            demonBoss.GetComponent<s_bossDemon>().Release();
+                        }
+                    }
+                    ui.GetComponent<s_ui>().SetPointer("Interact");
                     break;
                 
                 case "Wardrobe":
@@ -249,7 +280,7 @@ public class s_player : MonoBehaviour
                             S_MAIN.i.audioSource.PlayOneShot(S_MAIN.i.keyBreak);
                             S_MAIN.i.RemoveFromInv("i_key");
                         }
-                        else if (S_MAIN.i.isEntranceBroken)
+                        else if (!S_MAIN.i.hasKey && S_MAIN.i.isEntranceBroken)
                         {
                             ui.GetComponent<e_dialogue>().Talk("needTool");
                         }

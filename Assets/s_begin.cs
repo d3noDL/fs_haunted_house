@@ -16,6 +16,7 @@ public class s_begin : MonoBehaviour
 
     IEnumerator Begin()
     {
+        S_MAIN.i.PlayMusic(4);
         yield return new WaitForSeconds(1);
         mom.SetActive(true);
         yield return new WaitForSeconds(1);

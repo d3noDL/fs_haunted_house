@@ -7,6 +7,7 @@ public class s_explanation : MonoBehaviour
     public GameObject mom;
     public GameObject player;
     public e_dialogue dialogue;
+    public GameObject trigger7;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,6 +19,7 @@ public class s_explanation : MonoBehaviour
 
     IEnumerator Explanation()
     {
+        S_MAIN.i.PlayMusic(5);
         yield return new WaitForSeconds(1.1f);
         player.GetComponent<s_player>().isActive = false;
         mom.SetActive(true);
@@ -26,6 +28,8 @@ public class s_explanation : MonoBehaviour
         yield return new WaitForSeconds(1.1f);
         dialogue.Talk("motherFinal");
         gameObject.SetActive(false);
+        trigger7.SetActive(true);
+        
 
     }
 }

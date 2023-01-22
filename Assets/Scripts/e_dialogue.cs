@@ -17,7 +17,7 @@ public class e_dialogue : MonoBehaviour
         dTwinControllerLost, dTwinControllerFound, 
         itemi_key, itemi_keyBedroom, itemi_pikovit, itemi_wrench, itemi_nes,
         doorLocked, keyBroke, needTool, tooHeavy, bedNotMove,
-        remains, motherFinal, twingGiveforDemon, twinDemonReleased, demonGiveController;
+        remains, motherFinal, twinGiveforDemon, twinDemonReleased, demonGiveController;
     
 
     private string[] dialogue;
@@ -58,7 +58,7 @@ public class e_dialogue : MonoBehaviour
                 dialogue = twinDemonReleased;
                 break;
             case "twinGiveForDemon":
-                dialogue = twingGiveforDemon;
+                dialogue = twinGiveforDemon;
                 break;
             case "remains":
                 dialogue = remains;
