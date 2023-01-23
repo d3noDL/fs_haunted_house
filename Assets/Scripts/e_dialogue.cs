@@ -27,7 +27,15 @@ public class e_dialogue : MonoBehaviour
 
     private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Return) && isRunning)
+        {
+            isRunning = false;
+            pos = 0;
+            panel.SetActive(false);
+            pointer.SetActive(true);
+            S_MAIN.i.player.isActive = true;
+            StopAllCoroutines();
+        }
     }
 
     public void Talk(string dName)
@@ -132,15 +140,7 @@ public class e_dialogue : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         
-        if (Input.GetMouseButton(0))
-        {
-            isRunning = false;
-            pos = 0;
-            panel.SetActive(false);
-            pointer.SetActive(true);
-            S_MAIN.i.player.isActive = true;
-            StopAllCoroutines();
-        }
+        
 
         yield return new WaitForSeconds(2);
         textObject.text = "";

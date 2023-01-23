@@ -7,7 +7,13 @@ using UnityEngine.SceneManagement;
 public class s_menuController : MonoBehaviour
 {
     public AudioSource audio;
-    
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
 
     public void StartGame()
     {

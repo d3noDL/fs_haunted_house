@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -25,7 +26,14 @@ public class s_openingController : MonoBehaviour
         audio.Play();
     }
 
-    
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            StartCoroutine(Change());
+        }
+    }
+
     IEnumerator OpeningDialog()
     {
         
@@ -54,11 +62,10 @@ public class s_openingController : MonoBehaviour
     }
 
     IEnumerator Change()
-    {
-        
+    { 
         audio.PlayOneShot(openDoor);
-        yield return new WaitForSeconds(3);
         SceneManager.LoadScene(scene);
+        yield break;
     }
     
     
