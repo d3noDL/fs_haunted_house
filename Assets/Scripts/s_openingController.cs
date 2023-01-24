@@ -21,52 +21,58 @@ public class s_openingController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(OpeningDialog());
+        
         dialog.SetActive(true);
-        audio.Play();
+        NextLine();
+        
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(Change());
+            if (textObject.text == dialogue[pos])
+            {
+                NextLine();
+            }
+            else
+            {
+                StopAllCoroutines();
+                textObject.text = dialogue[pos];
+            }
         }
     }
-
-    IEnumerator OpeningDialog()
+    
+    void StartDialogue()
     {
-        
-        
-        foreach (char c in dialogue[pos])
+        pos = 0;
+        StartCoroutine(TypeLine());
+    }
+
+    IEnumerator TypeLine()
+    {
+        foreach (char c in dialogue[pos].ToCharArray())
         {
             textObject.text += c;
             yield return new WaitForSeconds(0.05f);
         }
-        
-        yield return new WaitForSeconds(2);
-        textObject.text = "";
-        
-        if (pos < dialogue.Length-1)
+    }
+
+    void NextLine()
+    {
+        if (pos < dialogue.Length - 1)
         {
             pos++;
-            StartCoroutine(OpeningDialog());
+            textObject.text = string.Empty;
+            StartCoroutine(TypeLine());
         }
         else
         {
-            audio.Stop();
-            dialog.SetActive(false);
-            StartCoroutine(Change());
-
+            audio.PlayOneShot(openDoor);
+            SceneManager.LoadScene(scene);
         }
     }
-
-    IEnumerator Change()
-    { 
-        audio.PlayOneShot(openDoor);
-        SceneManager.LoadScene(scene);
-        yield break;
-    }
+    
     
     
 }
