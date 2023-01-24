@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f7ec9f43-e737-4772-a970-9665f795cb5b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
-    </list>
+    <list default="true" id="f7ec9f43-e737-4772-a970-9665f795cb5b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -99,6 +97,7 @@
       <workItem from="1674307998860" duration="4708000" />
       <workItem from="1674322514557" duration="13884000" />
       <workItem from="1674452351504" duration="1193000" />
+      <workItem from="1674485374722" duration="661000" />
     </task>
     <servers />
   </component>
