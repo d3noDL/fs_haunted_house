@@ -381,8 +381,8 @@ public class s_player : MonoBehaviour
         }
         else
         {
-            door.GetComponent<s_door>().Locked();
-            Debug.Log("The door is locked!");
+            ui.GetComponent<e_dialogue>().Talk("doorLocked");
+            S_MAIN.i.audioSource.PlayOneShot(S_MAIN.i.lockedDoor);
             yield break;
         }
         

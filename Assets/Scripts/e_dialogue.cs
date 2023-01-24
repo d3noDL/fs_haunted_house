@@ -23,38 +23,37 @@ public class e_dialogue : MonoBehaviour
     private string[] dialogue;
     int pos = 0;
     public bool isRunning = false;
+    private string[] currentLine;
 
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && isRunning)
+        if (Input.GetMouseButtonDown(0) && isRunning)
         {
-            isRunning = false;
-            pos = 0;
-            panel.SetActive(false);
-            pointer.SetActive(true);
-            S_MAIN.i.player.isActive = true;
-            StopAllCoroutines();
+            if (textObject.text == dialogue[pos])
+            {
+                NextLine();
+            }
+            else
+            {
+                StopAllCoroutines();
+                textObject.text = dialogue[pos];
+            }
         }
     }
 
     public void Talk(string dName)
     {
-        if (!isRunning)
-        {
-            S_MAIN.i.player.isActive = false;
-            panel.SetActive(true);
-            pointer.SetActive(false);
-            pos = 0;
-            textObject.text = "";
-            StartCoroutine(StartTalking(dName));
-            isRunning = true;
-        }
-
-
+        S_MAIN.i.player.isActive = false;
+        panel.SetActive(true);
+        pointer.SetActive(false);
+        pos = 0;
+        textObject.text = "";
+        PickText(dName);
+        isRunning = true;
     }
 
-    IEnumerator StartTalking(string _dName)
+    private void PickText(string _dName)
     {
         switch (_dName)
         {
@@ -133,22 +132,19 @@ public class e_dialogue : MonoBehaviour
             default:
                 break;
         }
-
+        StartDialogue();
+    }
+    IEnumerator StartTalking()
+    {
         foreach (char c in dialogue[pos])
         {
             textObject.text += c;
             yield return new WaitForSeconds(0.05f);
         }
-        
-        
-
-        yield return new WaitForSeconds(2);
-        textObject.text = "";
 
         if (pos < dialogue.Length-1)
         {
             pos++;
-            StartCoroutine(StartTalking(_dName));
         }
         else
         {
@@ -159,8 +155,39 @@ public class e_dialogue : MonoBehaviour
             StopAllCoroutines();
             yield break;
         }
-        
+    }
 
+    void StartDialogue()
+    {
+        pos = 0;
+        StartCoroutine(TypeLine());
+    }
+
+    IEnumerator TypeLine()
+    {
+        foreach (char c in dialogue[pos].ToCharArray())
+        {
+            textObject.text += c;
+            yield return new WaitForSeconds(0.05f);
+        }
+    }
+
+    void NextLine()
+    {
+        if (pos < dialogue.Length - 1)
+        {
+            pos++;
+            textObject.text = string.Empty;
+            StartCoroutine(TypeLine());
+        }
+        else
+        {
+            isRunning = false;
+            panel.SetActive(false);
+            pointer.SetActive(true);
+            S_MAIN.i.player.isActive = true;
+            StopAllCoroutines();
+        }
     }
     
    
