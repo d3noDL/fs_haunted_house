@@ -7,6 +7,7 @@ public class s_motherrelease : MonoBehaviour
 {
 
     public GameObject mom;
+    public e_breaker breaker;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -16,6 +17,11 @@ public class s_motherrelease : MonoBehaviour
             S_MAIN.i.StopMusic();
             mom.SetActive(false);
             gameObject.SetActive(false);
+            if (breaker.isOn)
+            {
+                breaker.ToggleBreaker();
+            }
+            
         }
     }
 }

@@ -29,7 +29,11 @@ public class s_demonSpawner : MonoBehaviour
 
     private void SpawnGhost()
     {
-        
+
+        if (!S_MAIN.i.isGhostActive)
+        {
+            return;
+        }
         if (demon.activeSelf == false && light.activeSelf == false && isInSector == true)
         {
             var spawnX = box.center.x - box.size.x / 2 + Random.Range(0, box.size.x);

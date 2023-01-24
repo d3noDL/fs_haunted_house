@@ -24,12 +24,13 @@ public class S_MAIN : MonoBehaviour
     public bool releaseMother = false;
     public bool releaseTwin = false;
     public bool releaseDemon = false;
+    public bool isGhostActive = true;
 
     private void Awake()
     {
         i = this;
     }
-
+    
     public void PlayMusic(int clip)
     {
         audioSource.clip = musicClip[clip];

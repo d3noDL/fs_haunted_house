@@ -180,6 +180,7 @@ public class s_player : MonoBehaviour
                         {
                             ui.GetComponent<e_dialogue>().Talk("twinGiveForDemon");
                             S_MAIN.i.InventoryManager("i_nes");
+                            S_MAIN.i.isGhostActive = false;
                         }
                         else if (S_MAIN.i.releaseDemon && !S_MAIN.i.releaseTwin)
                         {
