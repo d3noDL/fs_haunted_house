@@ -323,7 +323,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Version 0.3
+  m_text: Version 0.31
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 366787f06a517a5449c2a44c19d6b241, type: 2}
   m_sharedMaterial: {fileID: 7548700595277735892, guid: 366787f06a517a5449c2a44c19d6b241, type: 2}
@@ -1681,6 +1681,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: WASD - Move /  Mouse - Look /  Left Mouse Click - Interact /  TAB - Inventory
+    / Space - Skip dialogue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 366787f06a517a5449c2a44c19d6b241, type: 2}
   m_sharedMaterial: {fileID: 7548700595277735892, guid: 366787f06a517a5449c2a44c19d6b241, type: 2}

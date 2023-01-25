@@ -29,7 +29,7 @@ public class s_openingController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (textObject.text == dialogue[pos])
             {
