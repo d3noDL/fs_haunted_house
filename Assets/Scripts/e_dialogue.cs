@@ -28,7 +28,7 @@ public class e_dialogue : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && isRunning)
+        if (Input.GetKeyDown(KeyCode.Space) && isRunning)
         {
             if (textObject.text == dialogue[pos])
             {
